@@ -1,0 +1,12 @@
+service: sls-aws-lambda
+provider:
+  name: aws
+  runtime: java8
+  timeout: 10
+package:
+  artifact: target/aws-lambda-0.0.1-SNAPSHOT-aws.jar
+functions:
+  orders:
+    handler: com.accenture.aws.lambda.OrderHandler
+    environment:
+      FUNCTION_NAME: orders
