@@ -6,7 +6,17 @@ provider:
 package:
   artifact: target/aws-lambda-0.0.1-SNAPSHOT-aws.jar
 functions:
+  findOrderByName:
+    handler: com.accenture.aws.lambda.OrderHandler
+    environment:
+      FUNCTION_NAME: findOrderByName
+
   orders:
     handler: com.accenture.aws.lambda.OrderHandler
     environment:
       FUNCTION_NAME: orders
+
+  getProductList:
+    handler: com.accenture.aws.lambda.OrderHandler
+    environment:
+      FUNCTION_NAME: getProductList

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.function.Function;
@@ -19,6 +20,15 @@ public class SpringbootAwsLambdaApplication {
     @Autowired
     private OrderDao orderDao;
 
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootAwsLambdaApplication.class, args);
+    }
+
+    @Bean
+    public RestTemplate getRestTemplate() {
+        return new RestTemplate();
+    }
+
     @Bean
     public Supplier<List<Order>> orders() {
         return () -> orderDao.buildOrders();
@@ -30,9 +40,9 @@ public class SpringbootAwsLambdaApplication {
                 .filter(order -> order.getName().equals(requestEvent.getQueryStringParameters().get("name"))).collect(Collectors.toList());
     }
 
-
-    public static void main(String[] args) {
-        SpringApplication.run(SpringbootAwsLambdaApplication.class, args);
+    @Bean
+    public Supplier<String> getProductList() {
+        return () -> orderDao.getProductList();
     }
 
 }
