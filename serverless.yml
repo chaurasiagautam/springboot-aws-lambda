@@ -16,7 +16,7 @@ functions:
     environment:
       FUNCTION_NAME: orders
 
-  getProductList:
+  getApiResponse:
     handler: com.accenture.aws.lambda.OrderHandler
     environment:
-      FUNCTION_NAME: getProductList
+      FUNCTION_NAME: getApiResponse

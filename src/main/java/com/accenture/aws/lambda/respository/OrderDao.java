@@ -29,7 +29,7 @@ public class OrderDao {
         ).collect(Collectors.toList());
     }
 
-    public String getProductList() {
+    public String getApiResponse() {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<String>(headers);

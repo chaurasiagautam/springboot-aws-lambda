@@ -41,8 +41,8 @@ public class SpringbootAwsLambdaApplication {
     }
 
     @Bean
-    public Supplier<String> getProductList() {
-        return () -> orderDao.getProductList();
+    public Supplier<String> getApiResponse() {
+        return () -> orderDao.getApiResponse();
     }
 
 }
